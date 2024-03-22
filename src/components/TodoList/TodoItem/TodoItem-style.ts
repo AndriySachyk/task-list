@@ -4,32 +4,32 @@ export const ItemTask = styled.li`
     position:relative;
     background-color: #e8e8e8;
     height: 250px;
-    padding: 25px 30px;
+    padding: 10px 15px;
     border-radius: 14px;
     border: 2px solid #c3c6ce;
-    `
+`
 
 export const BoxStatusTitleBtn = styled.div`
     display:flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 ` 
 
 export const TitleTask = styled.h2`
-    max-width: 600px;
+    /* max-width: 600px; */
     height: 33px;
     display: block;
-    font-size: 26px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 600;
-    overflow-y: auto;
+    /* overflow-y: auto; */
     text-align: center;
     `
 
 export const StatusTask = styled.p`
     font-style: normal;
-    width: 250px;
+    /* width: 250px; */
     font-size: 18px;
     font-weight: 500;
 

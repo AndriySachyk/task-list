@@ -7,14 +7,21 @@ export const MainPage = styled.div`
     min-height: 100vh;
     background-color: #e8e8e8;
     
-`
+    
+    `
 
 
 export const Container  = styled.section`
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 75px;
+    padding-bottom: 25px;
+@media screen and (min-width: 420px){
+    width: 420px;
+    
+}
     
 `

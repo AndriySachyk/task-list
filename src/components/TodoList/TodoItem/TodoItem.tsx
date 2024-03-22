@@ -1,4 +1,6 @@
 import { BoxButtons, BoxStatusTitleBtn, BtnDelete, BtnEditing, DescriptionTask, IconDelete, ItemTask, StatusTask, TitleTask } from "./TodoItem-style"
+import svgIcon from "../../../icon/symbol-defs.svg"
+
 
 export const TodoItem = () => {
   return (
@@ -10,12 +12,12 @@ export const TodoItem = () => {
             <BoxButtons>
                 <BtnDelete  type="button">
                     <IconDelete className='icon-delete'>
-                        <use href="./svg/symbol-defs.svg#icon-bin"></use>
+                        <use href={`${svgIcon}#icon-bin`}></use>
                     </IconDelete> 
                 </BtnDelete>
                 <BtnEditing  type="button">
                     <IconDelete className='icon-editing'>
-                        <use href="./svg/symbol-defs.svg#icon-editing"></use>
+                        <use href={`${svgIcon}#icon-editing`}></use>
                     </IconDelete> 
                 </BtnEditing>
             </BoxButtons>

@@ -4,20 +4,38 @@ export const HeaderContainer = styled.header`
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
     width: 100%;
     background-color: #FFF;
-    border-bottom: 2px solid #c3c6ce;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 50px;
-    padding-right: 50px;
-    
+    border-bottom: 2px solid #c3c6ce;    
     
 `
 
+export const BoxHeader = styled.section`
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: 420px) {
+        width: 420px;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+`
+
+
 export const Title = styled.h1`
-    font-size: 36px;
+    font-size: 22px;
     margin: 0;
     color: #212121;
     text-align: center;
@@ -25,6 +43,13 @@ export const Title = styled.h1`
     font-style: normal;
     font-weight: 700;
     line-height: 1.2;
-  
+    @media screen and (min-width: 768px) {
+        font-size: 28px;
+        
+    }
+    @media screen and (min-width: 1280px) {
+        font-size: 36px;
+        
+    }
    
 `

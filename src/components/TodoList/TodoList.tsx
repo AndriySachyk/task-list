@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux"
 import { TodoItem } from "./TodoItem/TodoItem"
-import { List } from "./TodoList-style"
+import { List, NumberOfTasks } from "./TodoList-style"
 import { selectTask } from "../../redux/selectors"
 
 export const TodoList = () => {
@@ -12,8 +12,11 @@ console.log('tasks', tasks)
 
 
   return (
+    <>
+      <NumberOfTasks>You have: 4 tasks</NumberOfTasks>
         <List>
             <TodoItem/>
         </List>
+    </>
   )
 }

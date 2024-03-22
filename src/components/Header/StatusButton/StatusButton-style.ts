@@ -2,18 +2,23 @@ import styled from "styled-components";
 
 
 export const RadioInputs = styled.div`
-
-    width: 360px;
-
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
     display: flex;
-    flex-wrap: wrap;
-    border-radius: 0.5rem;
-    background-color: #e8e8e8;
+    border-radius: 8px;
+    background-color: #ffffff;
     box-sizing: border-box;
     box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
-    padding: 0.25rem;
-    width: 360px;
-    font-size: 16px;
+    padding: 5px;
+    width: 95%;
+    font-size: 14px;
+    
+  
+    @media screen and (min-width: 768px) {
+        font-size: 16px;
+    }
 
 `
 
@@ -26,12 +31,13 @@ export const Radio = styled.label`
 export const InputStatus = styled.input.attrs({type: 'radio' })`
     display: none;
     &:checked + .name {
-        background-color: #fff;
+        background-color: #e8e8e8;
         font-weight: 600;
     }
 `
 
 export const Name = styled.span`
+   
     display: flex;
     cursor: pointer;
     align-items: center;

@@ -1,5 +1,4 @@
-// import React from 'react'
-import { ClearList } from "../ClearList/ClearList"
+// import { ClearList } from "../ClearList/ClearList"
 import { Header } from "../Header/Header"
 import { TodoList } from "../TodoList/TodoList"
 import { Container, MainPage } from "./Wrapper-style"
@@ -10,7 +9,7 @@ export const Wrapper = () => {
       <Header/>
       <Container>
 
-        <ClearList/>
+        {/* <ClearList/> */}
         <TodoList/>
       </Container>
     </MainPage>
