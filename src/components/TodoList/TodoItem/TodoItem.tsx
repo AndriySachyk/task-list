@@ -22,7 +22,7 @@ export const TodoItem = () => {
                 </BtnEditing>
             </BoxButtons>
         </BoxStatusTitleBtn>
-        <DescriptionTask> sfddfASDASDsdfsdfsdfsdfsdf </DescriptionTask>
+        <DescriptionTask> sfddfASDASDsdfsdfsdfsdfsdf</DescriptionTask>
     </ItemTask>
     
     </>

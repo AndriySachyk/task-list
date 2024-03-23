@@ -61,3 +61,21 @@ export const editTask = createAsyncThunk('tasks/editTask',async ({ taskId, updat
     }
   }
 );
+
+
+export const switchTheme = createAsyncThunk<boolean, boolean>(
+    'tasks',
+    async (theme: boolean, { rejectWithValue }) => {
+      try {
+         
+        // Notiflix.Notify.success('Theme switch was completed successfully');
+        console.log('theme', theme);
+  
+        return !theme; // Повертаємо змінене значення теми
+      } catch (error) {
+        console.error('Сталася помилка під час отримання даних:', error);
+        Notiflix.Notify.failure('Theme switch failed.');
+        return rejectWithValue(error);
+      }
+    }
+  );

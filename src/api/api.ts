@@ -28,3 +28,4 @@ export const deleteTask = async (taskId: number): Promise<void> => {
 export const editTask = async (taskId: number, updatedTask: Task): Promise<void> => {
   await axios.put(`tasks/${taskId}`, updatedTask);
 };
+

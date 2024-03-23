@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ItemTask = styled.li`
     position:relative;
     background-color: #e8e8e8;
-    height: 250px;
+    height: 200px;
     padding: 10px 15px;
     border-radius: 14px;
     border: 2px solid #c3c6ce;
@@ -17,21 +17,21 @@ export const BoxStatusTitleBtn = styled.div`
 ` 
 
 export const TitleTask = styled.h2`
-    /* max-width: 600px; */
-    height: 33px;
+    height: 22px;
     display: block;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
-    /* overflow-y: auto; */
+    overflow-y: auto;
     text-align: center;
     `
 
 export const StatusTask = styled.p`
     font-style: normal;
-    /* width: 250px; */
-    font-size: 18px;
-    font-weight: 500;
+    width: 70px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 400;
 
 `
 
@@ -47,7 +47,7 @@ export const DescriptionTask = styled.p`
     overflow-y: auto;
     word-wrap: break-word;
     font-style: normal;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
     
     `
@@ -56,7 +56,7 @@ export const DescriptionTask = styled.p`
 export const BoxButtons = styled.div`
     display: flex;
     gap: 10px;
-    width: 250px;
+    /* width: 250px; */
     justify-content: end;
     align-items: center;
 `
@@ -85,15 +85,18 @@ export const BtnDelete = styled.button`
 
 export const IconDelete = styled.svg`
     fill: #212121;
-    width: 35px;
-    height: 35px;
+    width: 20px;
+    height: 20px;
     transition: fill 1000ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 
 export const BtnEditing = styled.button`
     padding: 5px;
-  
+    
     outline: none;
     border: none;
     background-color: #e8e8e8 ;
@@ -113,7 +116,10 @@ export const BtnEditing = styled.button`
     `
 export const IconEditing = styled.svg`
     fill: #212121;
-    width: 35px;
-    height: 35px;
+    width: 20px;
+    height: 20px;
     transition: fill 1000ms;
-`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    `
