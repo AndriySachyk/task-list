@@ -17,9 +17,10 @@ export const ClearList = () => {
             <use href={`${svgSymbols}#icon-arrow-down2`}></use>
         </IconPencil>
       </BoxTitleIcon>
-    <ButtonAddTask type="button" ><IconCheckmark className='icon-add'>
-      <use href={`${svgSymbols}#icon-plus`}></use>
-    </IconCheckmark> Add a new task  </ButtonAddTask>
+    <ButtonAddTask className={darkMode?'withe':'black'} type="button" >
+      <IconCheckmark className='icon-add'>
+        <use href={`${svgSymbols}#icon-plus`}></use>
+      </IconCheckmark > Add a new task  </ButtonAddTask>
     </ContainerTitleClear>
   
 

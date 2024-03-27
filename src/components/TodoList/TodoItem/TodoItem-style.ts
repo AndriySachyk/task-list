@@ -2,19 +2,30 @@ import styled from "styled-components";
 
 export const ItemTask = styled.li`
     position:relative;
-    background-color: #e8e8e8;
     height: 200px;
     padding: 10px 15px;
     border-radius: 14px;
-    border: 2px solid #c3c6ce;
-`
+    border: 2px solid ;
+    transition: all 0.5s ease;
+    &.withe{
+        border-color: #c3c6ce;
+        background-color: #e8e8e8;
+    }
+    &.black{
+        color: #e8e8e8;
+        border-color: #cccccc;
+        background-color: #666666;
+    }
+    
+    
+    `
 
 export const BoxStatusTitleBtn = styled.div`
     display:flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
-` 
+    ` 
 
 export const TitleTask = styled.h2`
     height: 22px;
@@ -32,8 +43,8 @@ export const StatusTask = styled.p`
     height: 30px;
     font-size: 12px;
     font-weight: 400;
-
-`
+    
+    `
 
 
 export const DescriptionTask = styled.p`
@@ -41,16 +52,25 @@ export const DescriptionTask = styled.p`
     display: block;
     width: 100%;
     height: 135px;
-    background-color: #FFFFFF;
     border-radius: 8px;
-    border: 2px solid #c3c6ce;
+    border: 2px solid;
     overflow-y: auto;
     word-wrap: break-word;
     font-style: normal;
     font-size: 14px;
     font-weight: 400;
+    transition: all 0.5s ease;
+    &.withe{
+        background-color: #FFFFFF;
+        border-color: #c3c6ce;
+    }
+    &.black{
+        color: rgba(51, 65, 85, 1);
+        border-color: #f2f2f2;
+        background-color: #cccccc;
+    }
     
-    `
+`
 
 
 export const BoxButtons = styled.div`
@@ -64,33 +84,53 @@ export const BoxButtons = styled.div`
 
 export const BtnDelete = styled.button`
     padding: 5px;
-    
     outline: none;
     border: none;
-    background-color: #e8e8e8 ;
     border-radius: 4px;
-    transition: background-color 1000ms;
+    transition: all 0.5s ease;
+    &.withe {
+        background-color: #e8e8e8;
+        &:hover .icon-delete {
+            fill: #e8e8e8;
+        }
+    }
+    
+    &.black{
+        background-color: #666666;
+        &:hover .icon-delete {
+            fill: #666666;
+        }
+    }
+    
     &:hover{
-        background-color: #212121;
         cursor: pointer;
-        transition: background-color 1000ms;
+        transition: all 0.5s ease;
+        &.withe {
+            background-color: #666666;
+        }
         
+        &.black{
+            background-color: #cccccc;
+        }
     }
-    &:hover .icon-delete {
-        fill: #e8e8e8;
-        transition: fill 1000ms;
 
-    }
-    `
+`
 
 export const IconDelete = styled.svg`
-    fill: #212121;
     width: 20px;
     height: 20px;
-    transition: fill 1000ms;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: fill 0.5s ease;
+    &.withe {
+        fill: #212121;
+    }
+        
+    &.black{
+        fill: #e8e8e8;
+    }
+
 `
 
 
@@ -101,25 +141,47 @@ export const BtnEditing = styled.button`
     border: none;
     background-color: #e8e8e8 ;
     border-radius: 4px;
-    transition: background-color 1000ms;
+    transition: all 0.5s ease;
+    &.withe {
+        background-color: #e8e8e8;
+        &:hover .icon-editing {
+            fill: #e8e8e8;
+        }
+    }
+    
+    &.black{
+        background-color: #666666;
+        &:hover .icon-editing {
+            fill: #666666;
+        }
+    }
     &:hover{
         background-color: #212121;
         cursor: pointer;
-        transition: background-color 1000ms;
+        transition: all 0.5s ease;
+        &.withe {
+            background-color: #666666;
+        }
         
+        &.black{
+            background-color: #cccccc;
+        }
     }
-    &:hover .icon-editing {
-        fill: #e8e8e8;
-        transition: fill 1000ms;
-        
-    }
-    `
+
+`
 export const IconEditing = styled.svg`
     fill: #212121;
     width: 20px;
     height: 20px;
-    transition: fill 1000ms;
     display: flex;
     align-items: center;
     justify-content: center;
-    `
+    transition: fill 0.5s ease;
+    &.withe {
+        fill: #212121;
+    }
+        
+    &.black{
+        fill: #e8e8e8;
+    }
+`

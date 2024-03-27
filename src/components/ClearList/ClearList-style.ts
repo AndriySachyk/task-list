@@ -52,56 +52,64 @@ export const IconPencil = styled.svg`
 
 export const ButtonAddTask = styled.button`
     display: flex;
-    align-items: center;
     gap: 8px;
-    font-size: 16px;
-    font-family: "Open Sans", sans-serif;
-    padding: 10px 2em;
-    border: none;
-    border-radius: 5px;
-    font-weight: 500;
-    background-color: #e8e8e8;
-    cursor: pointer;
-    color: #212121;
-    transition: all 1000ms;
+    padding: 15px 15px;
+    border: unset;
+    border-radius: 8px;
+    z-index: 1;
     position: relative;
+    font-weight: 600;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 0.5s ease;
     overflow: hidden;
-    outline: 2px solid #212121;
-    &:hover {
+    box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
+    border: 2px solid #c3c6ce;
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 0;
+        border-radius: 8px;
+        background-color: #212121;
+        z-index: -1;
+        -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+        transition: all 250ms
+    }
+    
+    &.withe{
+        background-color: #ffffff;
+        color: rgba(51, 65, 85, 1);
+    }
+    &.black{
+        background-color: #cccccc;
+    }
+    
+    &:hover{
         color: #e8e8e8;
-        transform: scale(1.1);
-        outline: 2px solid #212121;
-        box-shadow: 4px 5px 17px -4px #268391;
-        &::before{
-            width: 250%;
-        }
     }
     &:hover .icon-add{
         fill: #e8e8e8;
-        transition: fill 1000ms;
     }
-    &::before {
-        content: "";
-        position: absolute;
-        left: -50px;
-        top: 0;
-        width: 0;
-        height: 100%;
-        background-color: #212121;
-        transform: skewX(45deg);
-        z-index: -1;
-        transition: width 1000ms;
+    &:hover::before {
+        width: 100%;
     }
-    `
+
+
+`
 
 
 export const IconCheckmark = styled.svg`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
-    height: 20px;
-    transition: fill 1000ms;
-    fill:#212121;
+    width: 18px;
+    height: 18px;
+    transition: fill 0.5s ease;
+    fill: #212121;
    
 `
