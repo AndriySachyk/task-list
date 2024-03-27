@@ -1,21 +1,22 @@
-// import { ClearList } from "../ClearList/ClearList"
 
-import { useSelector } from "react-redux"
+import { useTheme } from "../../Provider/ThemeProvider"
+import { ClearList } from "../ClearList/ClearList"
 import { Header } from "../Header/Header"
 import { TodoList } from "../TodoList/TodoList"
 import { Container, MainPage } from "./Wrapper-style"
-import { selectTheme } from "../../redux/selectors"
+
+// import {useEffect } from 'react'
+
+
 
 export const Wrapper = () => {
-
-const darkMode = useSelector(selectTheme)
-
+  const { darkMode } = useTheme();
 
   return (
-    <MainPage className={darkMode? 'withe' :'dark'} >
+    <MainPage className={darkMode? 'withe': 'black'} >
       <Header/>
       <Container>
-        {/* <ClearList/> */}
+        <ClearList/>
         <TodoList/>
       </Container>
     </MainPage>

@@ -6,10 +6,19 @@ export const HeaderContainer = styled.header`
     align-items: center;
     flex-direction: column;
     width: 100%;
-    background-color: #FFF;
-    border-bottom: 2px solid #c3c6ce;    
+    transition: background-color 0.5s ease;
     
-`
+    &.withe{
+        background-color: #FFF;
+        border-bottom: 2px solid #c3c6ce;    
+    }
+    &.black {
+        border-bottom: 2px solid #666666;    
+        background-color: #333333;
+        
+    }
+    
+    `
 
 export const BoxHeader = styled.section`
     position: relative;
@@ -30,14 +39,13 @@ export const BoxHeader = styled.section`
         padding-right: 15px;
         padding-left: 15px;
     }
-
-`
+    
+    `
 
 
 export const Title = styled.h1`
     font-size: 22px;
     margin: 0;
-    color: #212121;
     text-align: center;
     font-family: "Open Sans", sans-serif;
     font-style: normal;
@@ -51,5 +59,14 @@ export const Title = styled.h1`
         font-size: 36px;
         
     }
-   
+    transition: color 0.5s ease;
+    &.withe{
+        color: #212121;
+    }
+    &.black {
+        color: #cccccc;
+
+    }
+
+
 `

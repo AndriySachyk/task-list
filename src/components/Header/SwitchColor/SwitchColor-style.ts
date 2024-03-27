@@ -13,20 +13,31 @@ export const ToggleSwitch = styled.div`
     position: relative;
     width: 50px;
     height: 25px;
-    --light: #d8dbe0;
-    --dark: #28292c;
+    --light: #cccccc;
+    --dark: #212121;
     --link: rgb(27, 129, 112);
     --link-hover: rgb(24, 94, 82);
     `
 
 export const SwitchLabel = styled.label`
-cursor: pointer;
-position: absolute;
-width: 50px;
-height: 25px;
-background-color: var(--dark);
-border-radius: 25px;
-border: 3px solid var(--dark);
+    cursor: pointer;
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    border-radius: 25px;
+    border: 3px solid ;
+    transition: border-color 0.5s ease;
+    &.withe{
+        background-color: #e8e8e8;
+        border-color: var(--dark);
+    }
+    &.black{
+        background-color: #666666;
+        border-color: var(--light);
+        
+    }
+
+
 `
 export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
     position: absolute;

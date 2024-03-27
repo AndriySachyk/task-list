@@ -24,16 +24,30 @@ export const TitleClearList = styled.h2`
     color: #212121;
     font-weight: 400;
     margin: 0;
+    transition: color 0.5s ease;
+    &.withe{
+        color: #212121;
+    }
+    &.black {
+        color: #cccccc;
+        
+    }
     `
 
 export const IconPencil = styled.svg`
-    fill: #212121;
     width: 20px;
     height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: fill 0.5s ease;
+    &.withe{
+        fill: #212121;
+    }
+    &.black {
+        fill: #cccccc;
 
+    } 
 `
 
 export const ButtonAddTask = styled.button`
@@ -89,4 +103,5 @@ export const IconCheckmark = styled.svg`
     height: 20px;
     transition: fill 1000ms;
     fill:#212121;
-    `
+   
+`

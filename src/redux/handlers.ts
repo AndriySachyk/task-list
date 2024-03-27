@@ -55,8 +55,4 @@ export const handleEditTasksFulfilled = (state: TaskState, action: PayloadAction
     state.isLoading = false;
 }
 
-export const handleSwitchDarkMode = (state:TaskState, action:PayloadAction<boolean>)=>{
-    state.theme = !action.payload
-    state.error = null;
-    state.isLoading = false;
-}
+

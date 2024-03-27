@@ -5,11 +5,13 @@ export const MainPage = styled.div`
     display: block;
     width: 100%;
     min-height: 100vh;
-    & .withe{
-        background-color: #e8e8e8;
-    }
-    & .dark {
+    /* background-color: #e8e8e8; */
+    transition: background-color 0.5s ease;
+    &.black {
         background-color: #212121;
+    }
+    &.withe {
+        background-color: #e8e8e8;
     }
     `
 
