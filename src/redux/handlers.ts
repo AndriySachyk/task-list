@@ -28,7 +28,7 @@ export const handleTasksFulfilled = (state: TaskState, action: PayloadAction<Tas
 }
 
 
-export const handleAddTasksFulfilled = (state: TaskState, action: PayloadAction<Task | void>) => {
+export const handleAddTasksFulfilled = (state: TaskState, action: PayloadAction<Task>) => {
     if (action.payload) {
         state.items.push(action.payload);
     }
@@ -37,7 +37,7 @@ export const handleAddTasksFulfilled = (state: TaskState, action: PayloadAction<
 }
 
 
-export const handleDeleteTasksFulfilled = (state: TaskState, action: PayloadAction<number | undefined>)=>{
+export const handleDeleteTasksFulfilled = (state: TaskState, action: PayloadAction<string | undefined>)=>{
     state.items = state.items.filter(item => item.id !== action.payload);
     state.error = null;
     state.isLoading = false;

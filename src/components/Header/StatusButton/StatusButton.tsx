@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { InputStatus, Name, Radio, RadioInputs } from "./StatusButton-style"
 import { useTheme } from "../../../Provider/ThemeProvider";
+import { useStatusFilter } from "../../../Provider/StatusProvider";
 
 
 export const StatusBar = () => {
@@ -8,6 +9,9 @@ const [selectedOption, setSelectedOption] = useState(() => {
     const storedOption = localStorage.getItem('selectedOption');
     return storedOption !== null ? storedOption : 'All'; // або будь-яке інше значення за замовчуванням
 });
+
+const {setFilter} = useStatusFilter();
+
 
 const {darkMode} = useTheme()
 
@@ -18,10 +22,12 @@ useEffect(()=>{
 
 
 const handleStatusBar = (even: string):void =>{
-    console.log('even', even)
+    // console.log('even', even)
     setSelectedOption(even)
+    setFilter(even)
 }
 
+// console.log('statusFilter', statusFilter)
   return (
     <RadioInputs className={darkMode?'withe':'black'}>
         <Radio className="radio">
@@ -41,7 +47,7 @@ const handleStatusBar = (even: string):void =>{
                 className="input-status" 
                 type="radio" 
                 name="radio" 
-                value={'Pending'}
+                value={'pending'}
                 checked={selectedOption === "Pending"} 
                 onChange={()=>handleStatusBar("Pending")}
                 />
@@ -52,7 +58,7 @@ const handleStatusBar = (even: string):void =>{
                 className="input-status" 
                 type="radio" 
                 name="radio" 
-                value={"In process"}
+                value={"inProcess"}
                 checked={selectedOption === "In process"} 
                 onChange={()=>handleStatusBar("In process")}
                 />
@@ -64,7 +70,7 @@ const handleStatusBar = (even: string):void =>{
                 className="input-status" 
                 type="radio" 
                 name="radio" 
-                value={"Executed"}
+                value={"executed"}
                 checked={selectedOption === "Executed"} 
                 onChange={()=>handleStatusBar("Executed")}
             />

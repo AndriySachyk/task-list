@@ -5,10 +5,9 @@ import { Task } from './types';
 import { getAllTasks, addTask as addTaskAPI, deleteTask as deleteTaskAPI, editTask as editTaskAPI } from '../api/api';
 
 
-export const getTasks = createAsyncThunk('tasks/getTasks', async () => {
+export const getTasks = createAsyncThunk('/tasks', async () => {
       try {
-        const {data} = await getAllTasks();
-        if (data.length > 0 ) Notiflix.Notify.info(`Hey, you have such a number of tasks ${data.length}`); 
+        const data = await getAllTasks();
         return data; 
     } catch (error) {
         console.error('Сталася помилка під час отримання даних:', error);
@@ -22,6 +21,7 @@ export const getTasks = createAsyncThunk('tasks/getTasks', async () => {
 export const addTask = createAsyncThunk('tasks/addTask', async (task: Task) => {
     try {
         const {data} = await addTaskAPI(task); 
+        console.log('data', data)
         Notiflix.Notify.success('Creation task completed successfully');
         return data; 
     } catch (error) {
@@ -33,7 +33,7 @@ export const addTask = createAsyncThunk('tasks/addTask', async (task: Task) => {
 }
 );
 
-export const deleteTask = createAsyncThunk('tasks/deleteTask', async (taskId: number) => {
+export const deleteTask = createAsyncThunk('tasks/deleteTask', async (taskId: string) => {
     try {
         await deleteTaskAPI(taskId); 
         Notiflix.Notify.success('Delete task completed successfully');

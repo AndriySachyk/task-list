@@ -1,7 +1,8 @@
-import {BoxTitleIcon, ButtonAddTask, ContainerTitleClear, IconCheckmark, IconPencil, TitleClearList } from "./ClearList-style"
+import {BoxTitleIcon,  ContainerTitleClear,  IconPencil, TitleClearList } from "./ClearList-style"
 
 import svgSymbols from '../../icon/symbol-defs.svg';
 import { useTheme } from "../../Provider/ThemeProvider";
+import { ButtonAddNewTasks } from "../Button/ButtonAddNewTasks";
 
 export const ClearList = () => {
 
@@ -17,10 +18,7 @@ export const ClearList = () => {
             <use href={`${svgSymbols}#icon-arrow-down2`}></use>
         </IconPencil>
       </BoxTitleIcon>
-    <ButtonAddTask className={darkMode?'withe':'black'} type="button" >
-      <IconCheckmark className='icon-add'>
-        <use href={`${svgSymbols}#icon-plus`}></use>
-      </IconCheckmark > Add a new task  </ButtonAddTask>
+      <ButtonAddNewTasks/>
     </ContainerTitleClear>
   
 

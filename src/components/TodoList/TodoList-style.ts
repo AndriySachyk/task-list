@@ -28,7 +28,6 @@ export const NumberOfTasks = styled.h2`
     font-size: 18px;
     font-family: "Open Sans", sans-serif;
     font-weight: 500 ;
-    margin-bottom: 13px;
     text-align: center;
     transition: color 0.5s ease;
     &.withe{
@@ -37,4 +36,12 @@ export const NumberOfTasks = styled.h2`
     &.black{
         color: #cccccc;
     }
+`
+
+
+export const ContainerListBtn = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
 `

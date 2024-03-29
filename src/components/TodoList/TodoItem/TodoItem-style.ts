@@ -37,15 +37,24 @@ export const TitleTask = styled.h2`
     text-align: center;
     `
 
-export const StatusTask = styled.p`
-    font-style: normal;
+export const BoxStatusTask = styled.div`
     width: 70px;
     height: 30px;
+`
+
+export const StatusTask = styled.p`
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
     font-size: 12px;
     font-weight: 400;
     
     `
-
+export const StatusTaskValue = styled.p`
+    font-family: "Open Sans", sans-serif;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 400;
+`
 
 export const DescriptionTask = styled.p`
     padding: 10px 8px;

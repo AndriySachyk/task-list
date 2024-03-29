@@ -7,7 +7,7 @@ export const GET_TASKS = 'GET_TASKS';
 
 // Визначення типу об'єкта todo
 export interface Task {
-  id: number;
+  id: string;
   title: string;
   description: string;
   status:string;

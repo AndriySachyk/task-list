@@ -5,6 +5,7 @@ export const ContainerSwitchColor = styled.div`
     /* width: 50px;
     position: absolute;
     right: 10px; */
+
 `
 
 
@@ -17,6 +18,7 @@ export const ToggleSwitch = styled.div`
     --dark: #212121;
     --link: rgb(27, 129, 112);
     --link-hover: rgb(24, 94, 82);
+    z-index: 100;
     `
 
 export const SwitchLabel = styled.label`

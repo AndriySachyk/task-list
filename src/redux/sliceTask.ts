@@ -10,6 +10,7 @@ export type TaskState = {
     error: string | null;
   };
   
+
   const initialState: TaskState = {
     items: [],
     isLoading: false,
@@ -22,10 +23,10 @@ const taskSlice = createSlice({
     reducers: {},
     extraReducers: builder=>{
         builder
-        .addCase(getTasks.fulfilled, handleTasksFulfilled)
-        .addCase(addTask.fulfilled, handleAddTasksFulfilled)
-        .addCase(deleteTask.fulfilled, handleDeleteTasksFulfilled)
-        .addCase(editTask.fulfilled, handleEditTasksFulfilled)
+        .addCase(`${getTasks.fulfilled}`, handleTasksFulfilled)
+        .addCase(`${addTask.fulfilled}`, handleAddTasksFulfilled)
+        .addCase(`${deleteTask.fulfilled}`, handleDeleteTasksFulfilled)
+        .addCase(`${editTask.fulfilled}`, handleEditTasksFulfilled)
 
         .addMatcher(
             (action) => action.type.endsWith('/pending'),
