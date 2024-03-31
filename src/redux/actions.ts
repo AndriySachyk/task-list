@@ -2,7 +2,13 @@
 import Notiflix from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Task } from './types';
-import { getAllTasks, addTask as addTaskAPI, deleteTask as deleteTaskAPI, editTask as editTaskAPI } from '../api/api';
+import { getAllTasks, addTask as addTaskAPI,getOneTask as getOneTaskAPI , deleteTask as deleteTaskAPI, editTask as editTaskAPI, filterTasks as filterTasksAPI } from '../api/api';
+
+
+type DataEtid = {
+    taskId: string;
+    updatedTask: Task
+}
 
 
 export const getTasks = createAsyncThunk('/tasks', async () => {
@@ -17,6 +23,17 @@ export const getTasks = createAsyncThunk('/tasks', async () => {
 }
 );
 
+
+export const getOneTask = createAsyncThunk("tasks/getOneTask", async (taskId:string) =>{
+    try {
+        const data = await getOneTaskAPI(taskId); 
+        return data
+    } catch (error) {
+        console.error('Сталася помилка під час отримання даних:', error);
+        Notiflix.Notify.failure("Task edit failed.");
+        throw error
+    }
+})
 
 export const addTask = createAsyncThunk('tasks/addTask', async (task: Task) => {
     try {
@@ -46,20 +63,24 @@ export const deleteTask = createAsyncThunk('tasks/deleteTask', async (taskId: st
 );
 
 
-export const editTask = createAsyncThunk('tasks/editTask',async ({ taskId, updatedTask }: { taskId: number, updatedTask: Task }): Promise<Task> => {
+export const editTask = createAsyncThunk('tasks/editTask',async ({taskId, updatedTask}: DataEtid )=>{
     try {
-        await editTaskAPI(taskId, updatedTask); 
+        const {data} = await editTaskAPI(taskId, updatedTask)
+        console.log('data', data)
+        return data
+    } catch (error) {
+        
+    }
+});
 
-        Notiflix.Notify.success('Task editing was completed successfully');
-        
-        return   updatedTask;
-        
+
+export const filterTasks = createAsyncThunk('tasks/filterTasks', async (taskStatus: string)=>{
+    try {
+        const data = await filterTasksAPI(taskStatus); 
+        return data
     } catch (error) {
         console.error('Сталася помилка під час отримання даних:', error);
-        Notiflix.Notify.failure("Task editing failed.");
+        Notiflix.Notify.failure("Task filter failed.");
         throw error
     }
-  }
-);
-
-
+})

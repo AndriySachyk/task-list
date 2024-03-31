@@ -1,59 +1,45 @@
 import { BoxButtons, BoxStatusTask, BoxStatusTitleBtn, BtnDelete, BtnEditing, DescriptionTask, IconDelete, ItemTask, StatusTask, StatusTaskValue, TitleTask } from "./TodoItem-style"
 import svgIcon from "../../../icon/symbol-defs.svg"
 import { useTheme } from "../../../Provider/ThemeProvider"
-import { selectTask } from "../../../redux/selectors"
+import {  selectTask } from "../../../redux/selectors"
 import { useDispatch, useSelector } from "react-redux"
-import { deleteTask } from "../../../redux/actions"
+import { deleteTask, } from "../../../redux/actions"
+import { useState } from "react"
+import { ModalEditTask } from "../../Modals/ModalEditTask/ModalEditTask"
 // import { useStatusFilter } from "../../../Provider/StatusProvider"
-import { useEffect, useState } from "react"
 
 
-type Task = {
-    title: string;
-    id: string;
-    description?: string;
-    status: string;
-}
 
 export const TodoItem = () => {
-    const [filterTasks, setFilterTasks] = useState<Array<Task>>([])
+    
+    const [modalEditTask, setModalEditTask] = useState<boolean>(false)
+    const [currentId, setCurrentId] = useState<string>('')
+    
     const tasks = useSelector(selectTask)
     const {darkMode} = useTheme()
-    // const {statusFilter} = useStatusFilter()    
     const dispatch = useDispatch()
-    const status = localStorage.getItem("selectedOption")
     
     const handleDeleteTask = (id: string)=>{
         const idDeleteTask = id
         dispatch(deleteTask(idDeleteTask) as any)
     }
 
-useEffect(()=>{
-    const handleFilterStatus = () => {
-      console.log('status', status)
-        if (status === "All") {
-           return setFilterTasks(tasks)
-        }
-        const newList = tasks.filter((task)=> { return task.status === status})
-         setFilterTasks(newList)
-        console.log("HElllo", newList)
-        
-        // console.log(tasks)
 
-
+    
+    const handleOpenModalEdit = (id: string) => {
+        console.log("currentID",id)
+        setCurrentId(id)
+        setModalEditTask(true); // Відкрити модальне вікно
     }
-    handleFilterStatus();
-
-    console.log('filterTasks', filterTasks)
 
 
-},[status, setFilterTasks])
 
-
+console.log('modalEditTask', modalEditTask)
 
   return (
     <>
-    { filterTasks && filterTasks.map((task)=>{
+    {modalEditTask && <ModalEditTask modalEditTask={modalEditTask} setModalEditTask={setModalEditTask} currentId={currentId}/>}
+    { tasks && tasks.map((task)=>{
         return(<ItemTask className={darkMode?'withe':'black'} key={task.id}> 
         <BoxStatusTitleBtn>
             <BoxStatusTask>
@@ -69,7 +55,7 @@ useEffect(()=>{
                         <use href={`${svgIcon}#icon-bin`}></use>
                     </IconDelete> 
                 </BtnDelete>
-                <BtnEditing className={darkMode?'withe':'black'} type="button">
+                <BtnEditing className={darkMode?'withe':'black'} type="button" onClick={()=>handleOpenModalEdit(task.id)}>
                     <IconDelete className={`icon-editing ${darkMode?'withe':'black'}`}>
                         <use href={`${svgIcon}#icon-editing`}></use>
                     </IconDelete> 

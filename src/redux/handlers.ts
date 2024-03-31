@@ -56,3 +56,15 @@ export const handleEditTasksFulfilled = (state: TaskState, action: PayloadAction
 }
 
 
+export const handleFilterTasksFulfilled = (state: TaskState, action: PayloadAction<Task[] | void> )=>{
+    state.items = action.payload ? action.payload : [];
+    state.isLoading = false;
+    state.error = null;
+}
+
+
+export const handleGetOneTaskFulfilled = (state: TaskState, action:PayloadAction<Task[] | void> )=>{
+    state.oneTask = action.payload ? action.payload : [];
+    state.isLoading = false;
+    state.error = null;
+}

@@ -2,7 +2,7 @@ import { useTheme } from "../../Provider/ThemeProvider"
 import { ButtonAddTask, IconCheckmark } from "./ButtonAddNewTasks-style"
 import svgSymbols from '../../icon/symbol-defs.svg';
 import { useState } from "react";
-import { ModalCreateTask } from "../Modal/ModalCreateTask";
+import { ModalCreateTask } from "../Modals/ModalCreateTasks/ModalCreateTask";
 
 
 

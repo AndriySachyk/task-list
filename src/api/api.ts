@@ -10,6 +10,10 @@ export const getAllTasks = async (): Promise<{ data: Task[] }> => {
   return data.result.tasks;
 };
 
+export const getOneTask = async (taskId:string): Promise<{ data: Task }> =>{
+  const {data} = await axios.get(`tasks/${taskId}`);
+  return data.result.tasks;
+}
 
 
 export const addTask = async (task: Task): Promise<{ data: Task }> => {
@@ -25,7 +29,14 @@ export const deleteTask = async (taskId: string): Promise<void> => {
 
 
 
-export const editTask = async (taskId: number, updatedTask: Task): Promise<void> => {
-  await axios.put(`tasks/${taskId}`, updatedTask);
+export const editTask = async (taskId: string, updatedTask: Task): Promise<{data: Task}> => {
+  const {data} = await axios.put(`tasks/${taskId}`, updatedTask);
+  console.log('dataAPI', data)
+  return data.result; //
 };
 
+
+export const filterTasks = async (tasksStatus: string): Promise<{data: Task[]}> => {
+  const {data} = await axios.get(`tasks/status/${tasksStatus}`);
+  return data.result.tasks;
+}

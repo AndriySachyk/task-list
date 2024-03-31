@@ -1,65 +1,82 @@
-import { useEffect, useState } from "react"
-import { useTheme } from "../../Provider/ThemeProvider"
-import { BkgModal, BoxLableInputs, BtnCloseModal, BtnSubmit, ContainerForm,  IconClose,  InputStatus,  Inputs,  LableInputs, ModalContainer, Name, Radio, RasioInputs, Textarea, TitleForm } from "./ModalCreateNewTask-style"
-import { useDispatch } from "react-redux"
-import { nanoid } from "@reduxjs/toolkit"
-import { addTask } from "../../redux/actions"
-import svgSymbols from "../../icon/symbol-defs.svg"
+import React, { useCallback, useEffect, useState } from 'react'
+import { BkgModal, BoxLableInputs, BtnCloseModal, BtnSubmit, ContainerForm, IconClose, InputStatus, Inputs, LableInputs, ModalContainer, Name, Radio, RasioInputs, Textarea, TitleForm } from './ModalEdilTask-style'
+import { useTheme } from '../../../Provider/ThemeProvider'
+import svgSymbols from "../../../icon/symbol-defs.svg"
+import {  useDispatch, useSelector } from 'react-redux';
+
+import {  selectTask } from '../../../redux/selectors';
+import { editTask } from '../../../redux/actions';
+import { Task } from '../../../redux/types';
 
 interface Props {
-    modal: boolean;
-    setModal: (value: boolean) => void;
+    modalEditTask: boolean;
+    setModalEditTask: (value: boolean) => void;
+    currentId: string
   }
 
-export const ModalCreateTask: React.FC<Props> = ({ modal , setModal}) => {
-const {darkMode} = useTheme()
-
-const dispatch = useDispatch()
-
-const [formData, setFormData] = useState({
-    title: '',
-    description: '',
-    status: 'Pending', 
-  });
-
-const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-};
-
-
-const handleSubmit = (e:any)=>{
-   e.preventDefault()
-   const newTask = {
-       ...formData,
-       id: nanoid()
-    }
-dispatch(addTask(newTask) as any)
-// console.log('even', newTask)
+interface EditTask  {
+    title: string;
+    id: string;
+    description?: string;
+    status:string
 }
 
+export const ModalEditTask: React.FC<Props> = ({ modalEditTask , setModalEditTask, currentId}) => {
 
-const handleCloseModal = ()=>{
-    setModal(false)
-}
-
-useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        handleCloseModal();
-      }
+    const idTask = currentId
+    const tasks = useSelector(selectTask)
+    const taskEdit = tasks.filter((task)=>{return task.id === idTask})
+    const [formData, setFormData] = useState<EditTask>(taskEdit[0]);
+    const {darkMode} = useTheme()
+    const dispatch = useDispatch()
+    
+    
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
     };
 
-    if (modal) {
-      document.addEventListener('keydown', handleKeyPress);
-    }
 
-    return () => {
-      document.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [modal]);
 
-return (
+    const handleSubmit = (e:any)=>{
+        e.preventDefault()
+        const newTask: Task = {
+            id: currentId,
+            title: formData.title,
+            description: formData.description,
+            status: formData.status
+          };
+        dispatch(editTask({ taskId: currentId, updatedTask: newTask }) as any)
+      console.log('submit', newTask)
+     }
+     
+
+    const handleCloseModal = useCallback(() => {
+        setModalEditTask(false)
+      }, [setModalEditTask]);
+    
+
+    useEffect(() => {
+        const handleKeyPress = (event: KeyboardEvent) => {
+          if (event.key === 'Escape') {
+            handleCloseModal();
+          }
+        };
+        
+   
+        if (modalEditTask) {
+          document.addEventListener('keydown', handleKeyPress);
+        }
+    
+        return () => {
+          document.removeEventListener('keydown', handleKeyPress);
+        };
+
+      }, [modalEditTask, handleCloseModal]);
+
+      
+
+  return (
     <>
     <BkgModal onClick={handleCloseModal}></BkgModal>
         <ModalContainer className={darkMode?'withe':'black'}>
@@ -68,7 +85,7 @@ return (
                     <use href={`${svgSymbols}#icon-cross`}></use>
                 </IconClose>      
             </BtnCloseModal>
-            <TitleForm>Create Task</TitleForm>
+            <TitleForm>Edit Task</TitleForm>
             <ContainerForm onSubmit={handleSubmit}>
                 <BoxLableInputs>
                     <LableInputs htmlFor="title">Title:</LableInputs>
@@ -116,6 +133,16 @@ return (
                             value={"In process"}                          
                             />
                         <Name className={darkMode?'withe':'black'}>In Process</Name>
+                    </Radio>
+                    <Radio className="radio">
+                        <InputStatus 
+                            type="radio" 
+                            name="status"
+                            onChange={handleChange}
+                            checked={formData.status === 'Executed'}  
+                            value={"Executed"}                          
+                            />
+                        <Name className={darkMode?'withe':'black'}>Executed</Name>
                     </Radio>
                         
                     </RasioInputs>

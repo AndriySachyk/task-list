@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Task } from "./types";
-import { addTask, deleteTask, editTask, getTasks,  } from "./actions";
-import { handleAddTasksFulfilled, handleDeleteTasksFulfilled, handleEditTasksFulfilled, handlePending, handleRejected,  handleTasksFulfilled } from "./handlers";
+import { addTask, deleteTask, editTask, filterTasks, getOneTask, getTasks,  } from "./actions";
+import { handleAddTasksFulfilled, handleDeleteTasksFulfilled, handleEditTasksFulfilled, handleFilterTasksFulfilled, handleGetOneTaskFulfilled, handlePending, handleRejected,  handleTasksFulfilled } from "./handlers";
 
 
 export type TaskState = {
     items: Task[];
+    oneTask: Task[];
     isLoading: boolean;
     error: string | null;
   };
@@ -13,6 +14,7 @@ export type TaskState = {
 
   const initialState: TaskState = {
     items: [],
+    oneTask: [],
     isLoading: false,
     error: null
 };
@@ -25,8 +27,10 @@ const taskSlice = createSlice({
         builder
         .addCase(`${getTasks.fulfilled}`, handleTasksFulfilled)
         .addCase(`${addTask.fulfilled}`, handleAddTasksFulfilled)
+        .addCase(`${getOneTask.fulfilled}`, handleGetOneTaskFulfilled)
         .addCase(`${deleteTask.fulfilled}`, handleDeleteTasksFulfilled)
         .addCase(`${editTask.fulfilled}`, handleEditTasksFulfilled)
+        .addCase(`${filterTasks.fulfilled}`, handleFilterTasksFulfilled)
 
         .addMatcher(
             (action) => action.type.endsWith('/pending'),

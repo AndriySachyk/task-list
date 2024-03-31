@@ -9,7 +9,7 @@ export const GET_TASKS = 'GET_TASKS';
 export interface Task {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   status:string;
 }
 

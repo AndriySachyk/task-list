@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { InputStatus, Name, Radio, RadioInputs } from "./StatusButton-style"
 import { useTheme } from "../../../Provider/ThemeProvider";
 import { useStatusFilter } from "../../../Provider/StatusProvider";
+import { useDispatch } from "react-redux";
+import { filterTasks } from "../../../redux/actions";
 
 
 export const StatusBar = () => {
@@ -11,12 +13,13 @@ const [selectedOption, setSelectedOption] = useState(() => {
 });
 
 const {setFilter} = useStatusFilter();
-
+const dispatch = useDispatch();
 
 const {darkMode} = useTheme()
 
 useEffect(()=>{
     localStorage.setItem('selectedOption', selectedOption)
+    dispatch(filterTasks(selectedOption) as any)
 },[selectedOption])
 
 
