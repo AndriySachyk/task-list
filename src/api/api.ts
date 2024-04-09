@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Task } from '../redux/types';
 
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/'
+axios.defaults.baseURL = 'http://localhost:5555/api/'
 
 export const getAllTasks = async (): Promise<{ data: Task[] }> => {
   const {data} = await axios.get('tasks');
