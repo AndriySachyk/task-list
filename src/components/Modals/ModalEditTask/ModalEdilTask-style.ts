@@ -8,6 +8,7 @@ export const BkgModal = styled.div`
     left: 0;
     position: absolute;
     background-color: rgba(128, 128, 128, 0.5);
+    /* z-index: 100; */
 `
 
 export const ModalContainer = styled.div`

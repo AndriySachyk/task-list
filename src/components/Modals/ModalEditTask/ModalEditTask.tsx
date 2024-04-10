@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, {  useCallback, useEffect, useState } from 'react'
 import { BkgModal, BoxLableInputs, BtnCloseModal, BtnSubmit, ContainerForm, IconClose, InputStatus, Inputs, LableInputs, ModalContainer, Name, Radio, RasioInputs, Textarea, TitleForm } from './ModalEdilTask-style'
 import { useTheme } from '../../../Provider/ThemeProvider'
 import svgSymbols from "../../../icon/symbol-defs.svg"
@@ -7,12 +7,9 @@ import {  useDispatch, useSelector } from 'react-redux';
 import {  selectTask } from '../../../redux/selectors';
 import { editTask } from '../../../redux/actions';
 import { Task } from '../../../redux/types';
+import { useModalEdit } from '../../../Provider/ModalEditProviser';
 
-interface Props {
-    modalEditTask: boolean;
-    setModalEditTask: (value: boolean) => void;
-    currentId: string
-  }
+
 
 interface EditTask  {
     title: string;
@@ -21,9 +18,11 @@ interface EditTask  {
     status:string
 }
 
-export const ModalEditTask: React.FC<Props> = ({ modalEditTask , setModalEditTask, currentId}) => {
+export const ModalEditTask = () => {
 
-    const idTask = currentId
+    const {idTask, modalEdit, handleCloseModal} = useModalEdit()
+
+
     const tasks = useSelector(selectTask)
     const taskEdit = tasks.filter((task)=>{return task.id === idTask})
     const [formData, setFormData] = useState<EditTask>(taskEdit[0]);
@@ -41,30 +40,30 @@ export const ModalEditTask: React.FC<Props> = ({ modalEditTask , setModalEditTas
     const handleSubmit = (e:any)=>{
         e.preventDefault()
         const newTask: Task = {
-            id: currentId,
+            id: idTask,
             title: formData.title,
             description: formData.description,
             status: formData.status
           };
-        dispatch(editTask({ taskId: currentId, updatedTask: newTask }) as any)
+        dispatch(editTask({ taskId: idTask, updatedTask: newTask }) as any)
       console.log('submit', newTask)
-     }
+      handleCloseModalEdit() 
+    }
      
 
-    const handleCloseModal = useCallback(() => {
-        setModalEditTask(false)
-      }, [setModalEditTask]);
-    
+const handleCloseModalEdit = useCallback(() => {
+    handleCloseModal();
+}, [handleCloseModal]);
 
     useEffect(() => {
         const handleKeyPress = (event: KeyboardEvent) => {
           if (event.key === 'Escape') {
-            handleCloseModal();
+            handleCloseModalEdit();
           }
         };
         
    
-        if (modalEditTask) {
+        if (modalEdit) {
           document.addEventListener('keydown', handleKeyPress);
         }
     
@@ -72,15 +71,15 @@ export const ModalEditTask: React.FC<Props> = ({ modalEditTask , setModalEditTas
           document.removeEventListener('keydown', handleKeyPress);
         };
 
-      }, [modalEditTask, handleCloseModal]);
+      }, [modalEdit, handleCloseModalEdit]);
 
       
 
   return (
     <>
-    <BkgModal onClick={handleCloseModal}></BkgModal>
+    <BkgModal onClick={handleCloseModalEdit}></BkgModal>
         <ModalContainer className={darkMode?'withe':'black'}>
-            <BtnCloseModal className={darkMode?'withe':'black'} type="button" onClick={handleCloseModal} >
+            <BtnCloseModal className={darkMode?'withe':'black'} type="button" onClick={handleCloseModalEdit} >
                 <IconClose className="icon-close">
                     <use href={`${svgSymbols}#icon-cross`}></use>
                 </IconClose>      

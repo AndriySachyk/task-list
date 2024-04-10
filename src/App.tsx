@@ -1,4 +1,5 @@
 import "./App.css"
+import { ModalEditProvider } from "./Provider/ModalEditProviser";
 import { StatusFilterProvider } from "./Provider/StatusProvider";
 import { ThemeProvider } from "./Provider/ThemeProvider";
 import { Wrapper } from './components/Wrapper/Wrapper';
@@ -6,10 +7,13 @@ import { Wrapper } from './components/Wrapper/Wrapper';
 function App() {
   return (
    <>
+
    <ThemeProvider>
-   <StatusFilterProvider>
-      <Wrapper/>
-   </StatusFilterProvider>
+    <StatusFilterProvider>
+      <ModalEditProvider>
+          <Wrapper/>
+      </ModalEditProvider>
+    </StatusFilterProvider>
    </ThemeProvider>
    </>
   );

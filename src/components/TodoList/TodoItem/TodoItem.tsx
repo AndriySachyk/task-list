@@ -4,17 +4,19 @@ import { useTheme } from "../../../Provider/ThemeProvider"
 import {  selectTask } from "../../../redux/selectors"
 import { useDispatch, useSelector } from "react-redux"
 import { deleteTask, } from "../../../redux/actions"
-import { useState } from "react"
-import { ModalEditTask } from "../../Modals/ModalEditTask/ModalEditTask"
+// import { useState } from "react"
+// import { ModalEditTask } from "../../Modals/ModalEditTask/ModalEditTask"
+import { useModalEdit } from "../../../Provider/ModalEditProviser"
 // import { useStatusFilter } from "../../../Provider/StatusProvider"
 
 
 
 export const TodoItem = () => {
     
-    const [modalEditTask, setModalEditTask] = useState<boolean>(false)
-    const [currentId, setCurrentId] = useState<string>('')
+    // const [currentId, setCurrentId] = useState<string>('')
     
+    const {handleCurrentIdTask, handleOpenModal} = useModalEdit()
+
     const tasks = useSelector(selectTask)
     const {darkMode} = useTheme()
     const dispatch = useDispatch()
@@ -28,17 +30,17 @@ export const TodoItem = () => {
     
     const handleOpenModalEdit = (id: string) => {
         console.log("currentID",id)
-        setCurrentId(id)
-        setModalEditTask(true); // Відкрити модальне вікно
+        handleCurrentIdTask(id)
+        handleOpenModal()
+        
     }
 
 
 
-console.log('modalEditTask', modalEditTask)
+// console.log('modalEditTask', modalEditTask)
 
   return (
     <>
-    {modalEditTask && <ModalEditTask modalEditTask={modalEditTask} setModalEditTask={setModalEditTask} currentId={currentId}/>}
     { tasks && tasks.map((task)=>{
         return(<ItemTask className={darkMode?'withe':'black'} key={task.id}> 
         <BoxStatusTitleBtn>

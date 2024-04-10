@@ -5,7 +5,7 @@ export const List = styled.ul`
     display: flex;
     flex-direction: column;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 430px;
     border-radius: 14px;
     padding: 10px 15px;
@@ -30,7 +30,7 @@ export const List = styled.ul`
         height: 90%;
         position: absolute;
         width: 8px;
-        /* overflow: hidden; */
+        overflow: hidden;
     }
     &::-webkit-scrollbar-track {
         border-radius: 14px;
